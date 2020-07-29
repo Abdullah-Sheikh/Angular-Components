@@ -53,5 +53,6 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  }
 
-}

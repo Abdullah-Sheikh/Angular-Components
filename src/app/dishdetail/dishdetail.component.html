@@ -8,22 +8,41 @@ fxLayoutGap="10px"
 fxLayoutGap.xs="0">
 
 <div fxFlex="40">
-<p>Display the details of the Dish here</p>
+<div fxFlex *ngIf="dish">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3>{{dish.name | uppercase}}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+    <mat-card-content>
+      <p>{{dish.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 </div>
 
-<div fxFlex="40">
-<p>Display the list of comments here</p>
-<md-list fxFlex>
-  <md-list-item *ngFor="let dish of dishes comment">
+                
+      <div fxFlex="40">
+        
+        <mat-list fxFlex>
+          <h2> Comments </h2>
+      <br>
+          <mat-list-item *ngFor="let comt of dish.comments">
+            <h1 matLine> {{comt.comment}} </h1>
+            <h1 matLine> {{comt.rating }} stars </h1>
+            <h1 matLine> {{comt.author}} Date: {{ comt.date | date }} </h1>
+            <br>
+          </mat-list-item>
+        </mat-list>
+      
+      </div>
     
-    <p md-line> {{dish.comments.comment}} </p>
-    <p md-line>
-      <span> {{dish.comments.rating | stars}} </span>
-    </p>
-    <p md-line>--{{dish.comments.author | date}}</p>
-    <br>
-  </md-list-item>
-</md-list>
-</div>
 
 </div>
